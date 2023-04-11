@@ -1,0 +1,10 @@
+Sub RenameSheets()
+Dim i As Integer
+i = 1
+   For Each Sheet In Sheets
+      If Cells(i, 1) <> "" Then
+         Sheet.Name = Cells(i, 1).Value
+         i = i + 1
+      End If
+  Next Sheet
+End Sub

@@ -1,0 +1,25 @@
+Sub ExportWorksheets()
+
+    Dim worksheet_list As Variant, worksheet_name As Variant
+    Dim new_workbook As Workbook
+    Dim saved_folder As String
+    
+    worksheet_list = Array("Blue", "Orange")
+    '// makes sure you close the path with a back slash
+    saved_folder = "<Saved Folder>"
+    
+    For Each worksheet_name In worksheet_list
+    
+        On Error Resume Next
+        ' Opens a new Excel wokrobook
+        Set new_workbook = Workbooks.Add
+        
+        ThisWorkbook.Worksheets(worksheet_name).Copy new_workbook.Worksheets(1)
+        
+        new_workbook.SaveAs saved_folder & worksheet_name & ".xlsx", 51
+        new_workbook.Close False
+        
+    Next worksheet_name
+    
+    MsgBox "Export complete.", vbInformation
+End Sub

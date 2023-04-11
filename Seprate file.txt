@@ -1,0 +1,12 @@
+ Sub Splitbook()
+            MyPath = ThisWorkbook.Path
+            For Each sht In ThisWorkbook.Sheets
+            sht.Copy
+            ActiveSheet.Cells.Copy
+            ActiveSheet.Cells.PasteSpecial Paste:=xlPasteValues
+            ActiveSheet.Cells.PasteSpecial Paste:=xlPasteFormats
+            ActiveWorkbook.SaveAs _
+            Filename:=MyPath & "\" & sht.Name & ".xls"
+            ActiveWorkbook.Close savechanges:=False
+            Next sht
+            End Sub   
